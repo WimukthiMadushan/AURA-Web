@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X, Home, Info, Mail, User } from "lucide-react";
 import { Button } from "./ui/button";
 import Logo from "./../app/Images/Aura Logo-01.png";
@@ -38,10 +39,10 @@ const NavBar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home", icon: Home },
-    { name: "About", href: "#about", icon: Info },
-    { name: "Services", href: "#services", icon: User },
-    { name: "Contact", href: "#contact", icon: Mail },
+    { name: "Home", href: "#home", icon: Home, external: false },
+    { name: "About", href: "/About", icon: Info, external: true },
+    { name: "Services", href: "#services", icon: User, external: false },
+    { name: "Contact", href: "/Contact", icon: Mail, external: false },
   ];
 
   const linkColor = isDarkBackground
@@ -73,18 +74,31 @@ const NavBar = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${linkColor}`}
-                  >
-                    <span className="flex items-center gap-2">
-                      <item.icon size={16} />
-                      {item.name}
-                    </span>
-                  </a>
-                ))}
+                {navItems.map((item) =>
+                  item.external ? (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${linkColor}`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <item.icon size={16} />
+                        {item.name}
+                      </span>
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${linkColor}`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <item.icon size={16} />
+                        {item.name}
+                      </span>
+                    </a>
+                  )
+                )}
               </div>
             </div>
 
@@ -119,17 +133,29 @@ const NavBar = () => {
             }`}
           >
             <div className="px-6 pt-2 pb-4 space-y-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 ${linkColor}`}
-                >
-                  <item.icon size={18} />
-                  {item.name}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.external ? (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 ${linkColor}`}
+                  >
+                    <item.icon size={18} />
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 ${linkColor}`}
+                  >
+                    <item.icon size={18} />
+                    {item.name}
+                  </a>
+                )
+              )}
               <div className="px-3 py-2">
                 <Button className="w-full bg-gradient-primary text-white hover:opacity-90 rounded-lg">
                   Get Started

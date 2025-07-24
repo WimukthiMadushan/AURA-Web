@@ -7,11 +7,9 @@ import Services from "@/components/Services";
 export default function Home() {
   return (
     <div>
-      <NavBar />
       <Hero />
       <Services />
       <NewsUpdates />
-      <Footer />
     </div>
   );
 }
