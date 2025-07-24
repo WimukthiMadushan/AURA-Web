@@ -1,53 +1,68 @@
-"use client";
-import React from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
+import heroImage from "./../app/Images/hero-bg_50.jpg";
 
 const Hero = () => {
   return (
-    <div>
-      {/* Light Gradient Orbs for Depth */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[60rem] h-[60rem] bg-gradient-to-tr from-[#a1c4fd] to-[#c2e9fb] rounded-full opacity-30 blur-3xl animate-spin-slow"></div>
-        <div className="absolute bottom-10 right-10 w-[40rem] h-[40rem] bg-gradient-to-br from-[#d4fc79] to-[#96e6a1] rounded-full opacity-20 blur-2xl animate-pulse"></div>
+    <section
+      id="dark-background-trigger"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroImage.src}
+          alt="Aura Digital Labs Technology"
+          className="w-[100vw] h-[100%] object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-transparent"></div>
       </div>
 
-      <div className="container mx-auto px-[10rem] py-20">
-        <div className="grid lg:grid-cols-2 gap-5 items-center min-h-[80vh]">
-          {/* Content Section */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e0f2fe] text-[#0369a1] text-sm">
-                <Sparkles className="w-4 h-4" />
-                Aura Digital Labs
-              </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="max-w-4xl">
+          <h1 className="text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+            Transforming Digital Dreams
+            <span className="block bg-gradient-to-r from-primary-light to-primary bg-clip-text text-[#5492f7]">
+              into Powerful Reality
+            </span>
+          </h1>
 
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Transform Digital Dreams
-                <br />
-                Into Reality
-              </h1>
+          <p className="text-xl lg:text-2xl text-white/90 mb-12 max-w-3xl leading-relaxed">
+            Aura Digital Labs transforms your ideas into cutting-edge digital
+            solutions. From AI and machine learning to robotics and software
+            development, we build the future.
+          </p>
 
-              <p className="text-lg text-gray-600 max-w-lg">
-                We specialize in turning your digital vision into reality
-                through innovative solutions, cutting-edge technology, and
-                expert implementation. Let us guide your journey from concept to
-                success.
-              </p>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-6">
+            <Button
+              variant="default"
+              size="lg"
+              className="group text-lg px-8 py-4"
+            >
+              Get Started
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
 
-            <div className="flex gap-4">
-              <button className="px-6 py-3 bg-[#3b82f6] text-white rounded-lg font-medium hover:bg-[#2563eb] transition-colors flex items-center gap-2">
-                Try Demo
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                Learn More
-              </button>
-            </div>
+            <Button
+              variant="secondary"
+              size="lg"
+              className="group text-lg px-8 py-4 cursor-pointer"
+            >
+              <Play className="mr-2 h-5 w-5 cursor-pointer" />
+              Learn More
+            </Button>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
+        </div>
+      </div>
+    </section>
   );
 };
 

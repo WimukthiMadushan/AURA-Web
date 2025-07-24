@@ -98,6 +98,15 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")]
-
+  plugins: [require("tailwindcss-animate")],
+  variants: {
+    extend: {
+      textColor: ["nav-dark-bg"],
+    },
+  },
+  plugins: [
+    function ({ addVariant }) {
+      addVariant("nav-dark-bg", "&.nav-dark-bg &");
+    },
+  ],
 };
