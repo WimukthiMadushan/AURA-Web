@@ -10,7 +10,6 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -20,6 +19,35 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "move-horizontal-slow": {
+          "0%": { transform: "translateX(-100px)" },
+          "100%": { transform: "translateX(calc(100vw + 100px))" },
+        },
+        "move-horizontal-medium": {
+          "0%": { transform: "translateX(-80px)" },
+          "100%": { transform: "translateX(calc(100vw + 80px))" },
+        },
+        "move-horizontal-fast": {
+          "0%": { transform: "translateX(-60px)" },
+          "100%": { transform: "translateX(calc(100vw + 60px))" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "move-horizontal-slow": "move-horizontal-slow 20s linear infinite",
+        "move-horizontal-medium": "move-horizontal-medium 15s linear infinite",
+        "move-horizontal-fast": "move-horizontal-fast 12s linear infinite",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -64,6 +92,17 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "blue-primary": "hsl(var(--blue-primary))",
+        "blue-secondary": "hsl(var(--blue-secondary))",
+        "blue-light": "hsl(var(--blue-light))",
+        "gray-dark": "hsl(var(--gray-dark))",
+        "gray-medium": "hsl(var(--gray-medium))",
+        "gray-light": "hsl(var(--gray-light))",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       backgroundImage: {
         light: "var(--gradient-light)",
@@ -77,34 +116,15 @@ module.exports = {
         kinetic: "cubic-bezier(0.23, 1, 0.32, 1)",
         smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
   variants: {
     extend: {
       textColor: ["nav-dark-bg"],
     },
   },
   plugins: [
+    require("tailwindcss-animate"),
     function ({ addVariant }) {
       addVariant("nav-dark-bg", "&.nav-dark-bg &");
     },

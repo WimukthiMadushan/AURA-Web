@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Code2, Cpu, Zap } from "lucide-react";
 import heroImage from "./../app/Images/hero-bg_50.jpg";
 
 const Hero = () => {
