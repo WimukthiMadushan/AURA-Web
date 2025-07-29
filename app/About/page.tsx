@@ -6,6 +6,7 @@ import Yasiru from "./../Images/yasiru.jpg";
 import Sajitha from "./../Images/sajitha.jpg";
 import Dinujaya from "./../Images/Dinujaya.jpg";
 import Lasith from "./../Images/Lasith.jpg";
+import Stat from "@/components/Stat";
 
 const AboutUs = () => {
   return (
@@ -76,10 +77,19 @@ const AboutUs = () => {
         </div>
 
         {/* Leadership Team */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">
+        <div className="mb-20 flex flex-col items-center text-center">
+          {/* Decorative Line - slightly left aligned */}
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="h-1 w-14 bg-gradient-to-r from-gray-800 to-blue-600 rounded-full"></div>
+            <div className="h-0.5 w-6 bg-blue-600 rounded-full"></div>
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-4xl font-bold text-gray-800 mb-10">
             Our <span className="text-blue-600">Leadership Team</span>
-          </h3>
+          </h2>
+
+          {/* Team Members */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
@@ -127,27 +137,111 @@ const AboutUs = () => {
             ].map((member, index) => (
               <Card
                 key={index}
-                className="text-center p-6 hover:shadow-xl transition-all duration-300 border-0 bg-white/60 backdrop-blur-sm group hover:-translate-y-2"
+                className="text-center p-8 border border-blue-100/50 bg-gradient-to-br from-white via-blue-50/30 to-white/90 backdrop-blur-sm group hover:-translate-y-4 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-blue-200/50 relative overflow-hidden"
               >
-                <div className="relative mb-4">
-                  <div className="absolute inset-0 bg-blue-600/10 rounded-full scale-110 group-hover:scale-125 transition-transform duration-300"></div>
-                  <img
-                    src={member.image.src}
-                    alt={member.name}
-                    className="relative w-28 h-28 rounded-full mx-auto object-cover border-4 border-blue-100"
-                  />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5"></div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full -mr-12 -mt-12"></div>
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-purple-400/10 to-transparent rounded-full -ml-10 -mb-10"></div>
+
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full scale-110 group-hover:scale-125 transition-transform duration-500 blur-sm"></div>
+                  <div className="relative w-32 h-32 mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-1">
+                      <img
+                        src={member.image.src}
+                        alt={member.name}
+                        className="w-full h-full rounded-full object-cover bg-white"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <h4 className="text-lg font-bold text-gray-800 mb-1">
-                  {member.name}
-                </h4>
-                <p className="text-blue-600 font-medium text-sm mb-2">
-                  {member.position}
-                </p>
-                <p className="text-sm text-gray-600">{member.description}</p>
+                <div className="relative">
+                  <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-700 transition-colors duration-300">
+                    {member.name}
+                  </h4>
+                  <p className="text-blue-600 font-medium mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    {member.position}
+                  </p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {member.description}
+                  </p>
+                </div>
               </Card>
             ))}
           </div>
         </div>
+
+        {/* Why Choose Us */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            {/* Decorative line */}
+            <div className="flex items-center justify-center space-x-4 mb-6">
+              <div className="h-1 w-16 bg-gradient-to-r from-gray-800 to-blue-600 rounded-full"></div>
+              <div className="h-0.5 w-8 bg-blue-600 rounded-full"></div>
+            </div>
+            <h3 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+              Why <span className="text-blue-600">Choose Us</span>
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Faster, smarter, and affordable. A single industrial R&D hub with
+              10+ engineering and technology experts ready to bring your
+              next-gen product to life on time and budget.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Faster Go-to-market",
+                description:
+                  "We are 30% faster in developing new products, thanks to our unparalleled product design expertise and comprehensive in-house capabilities.",
+                icon: "🚀",
+              },
+              {
+                title: "Affordable high quality rates",
+                description:
+                  "We offer top-tier engineers with Master's-level qualifications at affordable development rates.",
+                icon: "💰",
+              },
+              {
+                title: "Customers own the IP",
+                description:
+                  "All intellectual property generated during development belongs to our customers.",
+                icon: "🔒",
+              },
+              {
+                title: "Deep cross-industry expertise",
+                description:
+                  "Our engineers' cross-disciplinary approach and multi-domain experience accelerate new product development.",
+                icon: "🎯",
+              },
+            ].map((feature, index) => (
+              <Card
+                key={index}
+                className="p-8 text-center border border-blue-100/50 bg-gradient-to-br from-white via-blue-50/20 to-purple-50/20 backdrop-blur-sm hover:shadow-2xl hover:shadow-blue-200/30 transition-all duration-500 group hover:-translate-y-4 shadow-lg relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 via-transparent to-purple-500/3"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400/8 to-transparent rounded-full -mr-10 -mt-10"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-purple-400/8 to-transparent rounded-full -ml-8 -mb-8"></div>
+
+                <div className="relative">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                    <div className="text-2xl text-white">{feature.icon}</div>
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-blue-700 transition-colors duration-300">
+                    {feature.title}
+                  </h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  <div className="mt-6 w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto group-hover:w-16 transition-all duration-300"></div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <Stat />
 
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-8">

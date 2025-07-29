@@ -111,23 +111,25 @@ const Services = () => {
                 </div>
 
                 {/* Content Overlay */}
-                <div className="relative h-full p-6 flex flex-col justify-end text-white">
-                  <div className="mb-4">
-                    <service.icon className="h-8 w-8 lg:h-12 lg:w-12 text-primary-light drop-shadow-lg" />
-                  </div>
-                  <h3 className="text-lg lg:text-2xl font-bold mb-2 drop-shadow-lg">
-                    {service.title}
-                  </h3>
-                  <p
-                    className={`text-sm lg:text-base text-white/90 leading-relaxed drop-shadow ${
-                      index < 2 ? "block" : "hidden lg:block"
-                    }`}
-                  >
-                    {service.description}
-                  </p>
+                <div className="relative h-full w-full flex flex-col justify-end z-10 p-4 sm:p-6">
+                  {/* Black Gradient Background at Bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-b-2xl z-0"></div>
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="mb-2">
+                      <service.icon className="h-7 w-7 lg:h-9 lg:w-9 text-white drop-shadow" />
+                    </div>
+                    <h3 className="text-lg lg:text-2xl font-semibold text-white drop-shadow-sm mb-1">
+                      {service.title}
+                    </h3>
+                    <p
+                      className={`text-sm lg:text-base font-medium text-white/90 leading-snug drop-shadow-sm ${
+                        index < 2 ? "block" : "hidden lg:block"
+                      }`}
+                    >
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             );

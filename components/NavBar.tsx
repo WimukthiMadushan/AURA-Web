@@ -39,10 +39,10 @@ const NavBar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home", icon: Home, external: false },
+    { name: "Home", href: "/", icon: Home, external: false },
     { name: "About", href: "/About", icon: Info, external: true },
-    { name: "Services", href: "#services", icon: User, external: false },
-    { name: "Contact", href: "/Contact", icon: Mail, external: false },
+    { name: "Solutions", href: "/Solutions", icon: User, external: false },
+    { name: "Contact", href: "/Contact", icon: Mail, external: true },
   ];
 
   const linkColor = isDarkBackground
@@ -62,13 +62,13 @@ const NavBar = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <h1
-                className={`text-2xl font-bold transition-colors duration-300 ${
-                  isDarkBackground ? "text-white" : "text-black"
-                }`}
-              >
-                <Image src={Logo} alt="Logo" className="h-8 w-auto" />
-              </h1>
+              <Link href="/" className="inline-block">
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  className="h-8 w-auto transition-opacity duration-300 hover:opacity-80"
+                />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -156,10 +156,17 @@ const NavBar = () => {
                   </a>
                 )
               )}
-              <div className="px-3 py-2">
-                <Button className="w-full bg-gradient-primary text-white hover:opacity-90 rounded-lg">
-                  Get Started
-                </Button>
+              <div className="px-3 py-2 cursor-pointer">
+                <Link
+                  href="https://wa.me/94754745359"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
